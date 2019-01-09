@@ -1,10 +1,15 @@
 <?php
-    require_once 'functions.php';
-    $careerData = require_once('./data/career_data.php');
-    $profileData = require_once('./data/profile_data.php');
-    $educations = getSortedArray($profileData['education']);
-    $experiences = getSortedArray($careerData['experiences']);
 
+
+$connection = new PDO ('mysql:host=localhost; dbname=academy; charset=utf8', 'root', '');
+$profile = $connection->query('SELECT * FROM `profile`');
+$profile = $profile->fetchAll();
+$education = $connection->query('SELECT * FROM `education` ORDER BY yearEnd DESC');
+$languages = $connection->query('SELECT * FROM `languages`');
+$interests = $connection->query('SELECT * FROM `interests`');
+$experiences = $connection->query('SELECT * FROM `experiences` ORDER BY yearStart DESC');
+$projects = $connection->query('SELECT * FROM `projects`');
+$skills = $connection->query('SELECT * FROM `skills`');
 ?>
 
 <!DOCTYPE html>
@@ -40,24 +45,24 @@
     <div class="sidebar-wrapper">
         <div class="profile-container">
             <img class="profile img-thumbnail" src="assets/images/profile.png" alt="" />
-            <h1 class="name"><?=$profileData['about']['name']?></h1>
-            <h3 class="tagline"><?=$profileData['about']['post']?></h3>
+            <h1 class="name"><?=$profile[0]['name']?></h1>
+            <h3 class="tagline"><?=$profile[0]['post']?></h3>
         </div><!--//profile-container-->
 
         <div class="contact-container container-block">
             <ul class="list-unstyled contact-list">
-                <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com"><?=$profileData['about']['email']?></a></li>
-                <li class="phone"><i class="fa fa-phone"></i><a href="tel:<?=$profileData['about']['phone']?>"><?=$profileData['about']['phone']?></a></li>
-                <li class="website"><i class="fa fa-globe"></i><a href="//<?=$profileData['about']['site']?>" target="_blank"><?=$profileData['about']['site']?></a></li>
+                <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com"><?=$profile[0]['email']?></a></li>
+                <li class="phone"><i class="fa fa-phone"></i><a href="tel:<?=$profile[0]['phone']?>"><?=$profile[0]['phone']?></a></li>
+                <li class="website"><i class="fa fa-globe"></i><a href="//<?=$profile[0]['site']?>" target="_blank"><?=$profile[0]['site']?></a></li>
             </ul>
         </div><!--//contact-container-->
         <div class="education-container container-block">
             <h2 class="container-block-title">Образование</h2>
-            <? foreach ($educations as $education) { ?>
+            <? foreach ($education as $step) { ?>
                 <div class="item">
-                    <h4 class="degree"><?=$education['speciality']?></h4>
-                    <h5 class="meta"><?=$education['title']?></h5>
-                    <div class="time"><?=$education['yearStart']?> - <?=$education['yearEnd']?></div>
+                    <h4 class="degree"><?=$step['speciality']?></h4>
+                    <h5 class="meta"><?=$step['title']?></h5>
+                    <div class="time"><?=$step['yearStart']?> - <?=$step['yearEnd']?></div>
                 </div><!--//item-->
             <? } ?>
         </div><!--//education-container-->
@@ -66,8 +71,8 @@
             <h2 class="container-block-title">Языки</h2>
 
             <ul class="list-unstyled interests-list">
-                <? foreach ($profileData['languages'] as $language) { ?>
-                    <li><?=$language['title']?> <span class="lang-desc"><?=$language['level']?></span></li>
+                <? foreach ($languages as $lang) { ?>
+                    <li><?=$lang['title']?> <span class="lang-desc"><?=$lang['level']?></span></li>
                 <? } ?>
             </ul>
         </div><!--//interests-->
@@ -75,8 +80,8 @@
         <div class="interests-container container-block">
             <h2 class="container-block-title">Интересы</h2>
             <ul class="list-unstyled interests-list">
-                <? foreach ($profileData['interest'] as $interest) { ?>
-                    <li><?=$interest?></li>
+                <? foreach ($interests as $interest) { ?>
+                    <li><?=$interest['interest']?></li>
                 <? } ?>
             </ul>
         </div><!--//interests-->
@@ -88,7 +93,7 @@
         <section class="section summary-section">
             <h2 class="section-title"><i class="fa fa-user"></i>Обо мне</h2>
             <div class="summary">
-                <?=$careerData['about']?>
+                Привет, меня зовут Станислав. Я PHP-разработчик. Почему ты должен выбрать меня? Потому что я проходил обучение в самой крутой IT академии: Академии вёрстки Артёма Исламова.
             </div><!--//summary-->
         </section><!--//section-->
 
@@ -114,9 +119,9 @@
         <section class="section projects-section">
             <h2 class="section-title"><i class="fa fa-archive"></i>Проекты</h2>
             <div class="intro">
-                <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
+
             </div><!--//intro-->
-            <? foreach ($careerData['projects'] as $project) { ?>
+            <? foreach ($projects as $project) { ?>
             <div class="item">
                 <span class="project-title"><a href="<?=$project['link']?>" target="_blank"><?=$project['title']?></a></span> - <span class="project-tagline"><?=$project['about']?></span>
             </div><!--//item-->
@@ -126,7 +131,7 @@
         <section class="skills-section section">
             <h2 class="section-title"><i class="fa fa-rocket"></i>Навыки</h2>
             <div class="skillset">
-                <? foreach ($careerData['skills'] as $skill) { ?>
+                <? foreach ($skills as $skill) { ?>
                 <div class="item">
                     <h3 class="level-title"><?=$skill['title']?></h3>
                     <div class="level-bar">
@@ -137,6 +142,27 @@
                 <? } ?>
             </div>
         </section><!--//skills-section-->
+
+        <form action="#" method="POST">
+            <textarea name="comment" id="" cols="30" rows="10" placeholder="Оставить отзыв"></textarea>
+            <button type="submit">Отправить отзыв</button>
+        </form>
+
+        <? if ($_POST['comment']) {
+            $i = 1;
+            $comment = $_POST['comment'];
+            $connection->query("INSERT INTO `comments` (`comment`) VALUES ('$comment')");
+        }
+
+        $commentsOfUsers = $connection->query('SELECT * FROM `comments`');
+        foreach ($commentsOfUsers as $comment) {
+        ?>
+
+        <div style="font-size: 35px; margin: auto" >
+            <?= ++$i . ') ' . $comment['comment'] ?>
+        </div>
+
+        <? } ?>
 
     </div><!--//main-body-->
 </div>
