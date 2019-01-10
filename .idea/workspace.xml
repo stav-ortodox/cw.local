@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0176bf07-f8e7-4b37-812a-8995df3b0c92" name="Default" comment="111">
-      <change afterPath="$PROJECT_DIR$/cookie/content.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cookie/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cookie/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0176bf07-f8e7-4b37-812a-8995df3b0c92" name="Default" comment="Урок №10 Cookie, сессии и аутентификация" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +46,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookie/content.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
+            <state relative-caret-position="483">
               <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
@@ -215,7 +210,7 @@
       <workItem from="1547067593701" duration="1536000" />
       <workItem from="1547069434072" duration="1731000" />
       <workItem from="1547071281727" duration="817000" />
-      <workItem from="1547147893644" duration="8553000" />
+      <workItem from="1547147893644" duration="9405000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <created>1545090655628</created>
@@ -224,15 +219,21 @@
       <option name="project" value="LOCAL" />
       <updated>1545090655628</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Урок №10 Cookie, сессии и аутентификация">
+      <created>1547157444072</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547157444073</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81807000" />
+    <option name="totallyTimeSpent" value="82659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16136363" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -244,7 +245,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32962137" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32820514" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
@@ -261,7 +262,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="111" />
-    <option name="LAST_COMMIT_MESSAGE" value="111" />
+    <MESSAGE value="Урок №10 Cookie, сессии и аутентификация" />
+    <option name="LAST_COMMIT_MESSAGE" value="Урок №10 Cookie, сессии и аутентификация" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/assets/css/styles.css">
@@ -359,7 +361,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookie/content.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
+        <state relative-caret-position="483">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding>
             <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
