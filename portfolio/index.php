@@ -173,7 +173,6 @@ $skills = $connection->query('SELECT * FROM `skills`');
 </div>
 
 <footer class="footer">
-
 </footer><!--//footer-->
 
 <!-- Javascript -->
